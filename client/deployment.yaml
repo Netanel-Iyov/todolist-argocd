@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-list-react-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: todo-list-react
+  template:
+    metadata:
+      labels:
+        app: todo-list-react
+    spec:
+      containers:
+      - name: todo-list-react
+        image: natiiyov/todo-list:testing-1.0
+        ports:
+        - containerPort: 80
