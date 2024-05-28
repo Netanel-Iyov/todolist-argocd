@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-list-mongo-deployment
+spec:
+  selector:
+    matchLabels:
+      app: todo-list-mongo-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: todo-list-mongo-deployment
+    spec:
+      containers:
+      - name: todo-list-mongo
+        image: mongo:7.0.0
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: todo-list-mongo-storage
+          mountPath: /data/db
+      volumes:
+      - name: todo-list-mongo-storage
+        persistentVolumeClaim:
+          claimName: todo-list-mongo-pvc
