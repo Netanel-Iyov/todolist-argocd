@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-list-api-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: todo-list-api
+  template:
+    metadata:
+      labels:
+        app: todo-list-api
+    spec:
+      containers:
+      - name: todo-list-api
+        image: natiiyov/todo-list-api:1.0.0
+        ports:
+        - containerPort: 3001
+        env:
+        - name: JWT_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: todolist-api-secrets
+              key: JWT_SECRET_KEY
+        - name: MONGO_DB_DOMAIN
+          valueFrom:
+            secretKeyRef:
+              name: todolist-api-secrets
+              key: MONGO_DB_DOMAIN
+        - name: MONGO_DB_PORT
+          valueFrom:
+            secretKeyRef:
+              name: todolist-api-secrets
+              key: MONGO_DB_PORT
+        - name: MONGO_DATABASE_NAME
+          valueFrom:
+            secretKeyRef:
+              name: todolist-api-secrets
+              key: MONGO_DATABASE_NAME
+        - name: MONGO_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: todolist-api-secrets
+              key: MONGO_DB_USER
+        - name: MONGO_DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: todolist-api-secrets
+              key: MONGO_DB_PASS
+        - name: CORS_ORIGIN
+          valueFrom:
+            secretKeyRef:
+              name: todolist-api-secrets
+              key: CORS_ORIGIN
