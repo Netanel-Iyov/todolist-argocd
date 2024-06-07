@@ -17,3 +17,8 @@ spec:
             name: todo-list-react-service
             port:
               number: 80
+    tls:
+    - hosts:
+      - '*.niyov.com'
+      - niyov.com
+      secretName: niyov-wildcard-certificate-tls
