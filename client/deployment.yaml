@@ -14,12 +14,6 @@ spec:
     spec:
       containers:
       - name: todo-list-react
-        image: natiiyov/todo-list:testing-1.0
+        image: natiiyov/todo-list-client:1.0.0
         ports:
         - containerPort: 80
-        env:
-        - name: REACT_APP_API_BASE
-          valueFrom:
-            secretKeyRef:
-              name: todo-list-react-secrets
-              key: REACT_APP_API_BASE
