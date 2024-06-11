@@ -15,5 +15,6 @@ spec:
       containers:
       - name: todo-list-react
         image: natiiyov/todo-list-client:1.0.1
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
