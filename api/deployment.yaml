@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: todo-list-api
-        image: natiiyov/todo-list-api:1.0.0
+        image: natiiyov/todo-list-api:1.0.1
         ports:
         - containerPort: 3001
         env:
